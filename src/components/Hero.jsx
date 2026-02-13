@@ -4,22 +4,24 @@ import Img from "../assets/images/hero-img.webp";
 function Hero() {
   return (
     <section id="home" className="bg-bgColor">
-      <div className="max-w-7xl w-full mx-auto p-5  md:p-20 flex flex-col md:flex-row gap-10">
-        <div class="flex flex-1 flex-col  gap-8 justify-center">
-          <div class="space-y-4">
-            <h3 class="text-green-400 uppercase tracking-wider">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-10 sm:px-6 sm:py-12 md:flex-row md:items-center md:gap-12 lg:px-10 lg:py-16">
+        <div className="flex flex-1 flex-col justify-center gap-6 md:gap-8">
+          <div className="space-y-3 md:space-y-4">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-green-500 sm:text-sm">
               Ph.D. in intonation and acoustics
             </h3>
-            <h1 class="text-6xl">Sevil Velsha Voice of Influence</h1>
+            <h1 className="max-w-xl text-3xl font-semibold leading-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
+              Sevil Velsha Voice of Influence
+            </h1>
           </div>
           <div>
-            <span class="text-gray-500">
+            <span className="block max-w-lg text-sm leading-relaxed text-gray-600 sm:text-base md:text-lg">
               Speaker | Author | Vocal Dynamics Coach | Presentation Strategist
             </span>
           </div>
-          <div class="mt-5">
+          <div className="mt-2 sm:mt-3">
             <a
-              class="inline-block px-14 cursor-pointer font-semibold py-4 rounded-full rounded-tr-none bg-[#81e281] hover:bg-[#74d574] transition-colors text-center"
+              className="inline-block cursor-pointer rounded-full rounded-tr-none bg-[#81e281] px-7 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-[#74d574] sm:px-10 sm:py-3.5 sm:text-base"
               href="/booking"
             >
               Book a Free Voice Assessment
@@ -27,8 +29,14 @@ function Hero() {
           </div>
         </div>
 
-        <div className="flex-1">
-          <img src={Img} alt="image" decoding="async" loading="lazy" />
+        <div className="flex flex-1 justify-center md:justify-end">
+          <img
+            src={Img}
+            alt="Sevil Velsha portrait"
+            decoding="async"
+            loading="lazy"
+            className="h-auto w-full max-w-[460px] rounded-2xl object-cover sm:max-w-[520px] md:max-w-[420px] lg:max-w-[540px]"
+          />
         </div>
       </div>
     </section>

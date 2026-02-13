@@ -5,64 +5,70 @@ import { MdCall, MdMailOutline } from "react-icons/md";
 function Newsletter() {
   return (
     <section id="contact">
-      <div class="max-w-7xl  mx-auto py-20 px-5 lg:px-0 ">
-        <h6 class="uppercase tracking-widest text-lg mb-5 font-semibold text-primary">
+      <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+        <h6 className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-green-600 sm:text-base">
           Order
         </h6>
-        <div class="space-y-4">
-          <h2 class="text-4xl">Book Sevil to speak</h2>
-          <p class="text-gray-600 text-lg font-bold">
-            Whether it's a keynote, masterclass, or panel—Sevil brings passion,
+
+        <div className="space-y-3">
+          <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl md:text-5xl">
+            Book Sevil to speak
+          </h2>
+          <p className="max-w-3xl text-base font-medium leading-relaxed text-gray-600 sm:text-lg">
+            Whether it's a keynote, masterclass, or panel, Sevil brings passion,
             precision, and practical insight to every stage.
           </p>
         </div>
-        <div class="grid mt-5  sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="flex items-center gap-2">
-            <span class="text-2xl">
-            <MdMailOutline />
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex items-start gap-2 rounded-xl border border-gray-200 bg-white p-4">
+            <span className="pt-0.5 text-2xl text-green-600">
+              <MdMailOutline />
             </span>
-            <h2 class="text-base text-gray-500 font-semibold">
+            <h3 className="text-sm font-semibold leading-snug text-gray-600 sm:text-base">
               Let's Talk - Book Sevil
-            </h2>
+            </h3>
           </div>
-          <div class="flex items-center gap-2">
-            <span class="text-2xl">
-            <IoIosLink />
+
+          <div className="flex items-start gap-2 rounded-xl border border-gray-200 bg-white p-4">
+            <span className="pt-0.5 text-2xl text-green-600">
+              <IoIosLink />
             </span>
-            <h2 class="text-base text-gray-500 font-semibold">
+            <h3 className="text-sm font-semibold leading-snug text-gray-600 sm:text-base">
               [Download Speaker One Sheet (PDF)]
-            </h2>
+            </h3>
           </div>
-          <div class="flex gap-2  items-center">
-            <span class="text-2xl text-gray-600">
-            <MdCall />
+
+          <div className="flex items-start gap-2 rounded-xl border border-gray-200 bg-white p-4 sm:col-span-2 lg:col-span-1">
+            <span className="pt-0.5 text-2xl text-green-600">
+              <MdCall />
             </span>
-            <h2 class="text-base text-gray-500 font-semibold">
+            <h3 className="text-sm font-semibold leading-snug text-gray-600 sm:text-base">
               Available for events worldwide | Based in Vancouver, Canada
-            </h2>
+            </h3>
           </div>
         </div>
-        <form class="my-5 flex flex-col md:flex-row gap-5 ">
+
+        <form className="mt-6 flex flex-col gap-4 md:flex-row">
           <input
             type="text"
-            required=""
-            placeholder="Your Full name"
-            class="border-gray-200 rounded-xl rounded-tl-none border p-3 bg-gray-50 h-12 cursor-pointer md:w-1/2 w-full focus:outline-2 outline-blue-900 "
+            required
+            placeholder="Your Full Name"
+            className="h-12 w-full rounded-xl rounded-tl-none border border-gray-200 bg-gray-50 px-3 text-sm outline-none transition focus:border-green-300 focus:ring-2 focus:ring-green-200 md:w-1/2"
             name="name"
-            value=""
           />
-          <div class="w-full md:w-1/2 h-12 relative">
+
+          <div className="relative h-12 w-full md:w-1/2">
             <input
               type="email"
-              required=""
+              required
               placeholder="Your Email"
-              class="border-gray-200 rounded-xl rounded-br-none border p-3 bg-gray-50  cursor-pointer  w-full focus:outline-2 outline-blue-900 "
+              className="h-full w-full rounded-xl rounded-br-none border border-gray-200 bg-gray-50 px-3 pr-28 text-sm outline-none transition focus:border-green-300 focus:ring-2 focus:ring-green-200"
               name="email"
-              value=""
             />
             <button
               type="submit"
-              class="absolute right-2 bottom-1 top-1 bg-[#8BEB8B] active:scale-105 hover:bg-[#78e378] cursor-pointer  px-4 py-2 rounded-xl font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="absolute bottom-1 right-1 top-1 rounded-xl bg-[#8BEB8B] px-4 text-sm font-semibold text-gray-900 transition-colors hover:bg-[#78e378] active:scale-105"
             >
               Subscribe
             </button>
