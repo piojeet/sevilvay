@@ -2,20 +2,21 @@ import React from "react";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { LuInstagram } from "react-icons/lu";
+import { NavLink } from "react-router";
 
 const QUICK_LINKS = [
-  { label: "Ph.D. in intonation and acoustics", href: "#home" },
-  { label: "My story", href: "#story" },
-  { label: "About me", href: "#about" },
-  { label: "How We Work", href: "#services" },
-  { label: "Testimonial", href: "#testimonial" },
-  { label: "Order", href: "#contact" },
+  { label: "Ph.D. in intonation and acoustics", href: "#" },
+  { label: "My story", href: "#" },
+  { label: "About me", href: "#" },
+  { label: "How We Work", href: "#" },
+  { label: "Testimonial", href: "#" },
+  { label: "Order", href: "#" },
 ];
 
 const SOCIAL_LINKS = [
   { label: "Facebook", href: "#", icon: FaFacebookF },
   { label: "Twitter", href: "#", icon: FaTwitter },
-  { label: "Instagram", href: "#", icon: LuInstagram },
+  { label: "Instagram", href: "https://www.instagram.com/sevilvelsha?igsh=MXVoN29zNWIza2NzdQ%3D%3D", icon: LuInstagram },
 ];
 
 function Footer() {
@@ -74,19 +75,19 @@ function Footer() {
               <li>
                 <a
                   className="text-sm text-gray-500 transition hover:text-gray-700 hover:underline sm:text-base"
-                  href="#"
+                  href="https://www.instagram.com/sevilvelsha?igsh=MXVoN29zNWIza2NzdQ%3D%3D"
                 >
                   Instagram: @sevil.velsha
                 </a>
               </li>
               <li>
-                <a
+                <NavLink
                   className="text-sm text-gray-500 transition hover:text-gray-700 hover:underline sm:text-base"
                   href="/blog/voice-ui-design-art"
                 >
                   Blog: Sound and Presence - Reflections on Speaking, Voice and
                   Performance
-                </a>
+                </NavLink>
               </li>
             </ul>
 

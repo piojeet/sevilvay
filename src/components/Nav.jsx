@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
-import { useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 
 const MENU_ITEMS = [
   { label: "About me", sectionId: "about" },
@@ -19,6 +19,7 @@ function Nav() {
   const [activeSection, setActiveSection] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,6 +103,13 @@ function Nav() {
   const liStyle =
     "cursor-pointer font-semibold transition-all duration-150 hover:text-green-600";
 
+  const isItemActive = (item) => {
+    if (item.path === "/blogs") return location.pathname.startsWith("/blogs");
+    if (item.path === "/book-session") return location.pathname === "/book-session";
+    if (item.path) return location.pathname === item.path;
+    return activeSection === item.sectionId;
+  };
+
   return (
     <header className="bg-bgColor">
       <div className="mx-auto hidden max-w-7xl items-center justify-between border-b border-gray-200 px-5 py-4 text-sm md:flex">
@@ -125,7 +133,7 @@ function Nav() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-5 lg:py-5">
           <div className="cursor-pointer select-none text-2xl font-bold sm:text-3xl">
-            Sevil Velsha
+            <NavLink to="/">Sevil Velsha</NavLink>
           </div>
 
           <ul className="hidden items-center gap-4 lg:flex xl:gap-6">
@@ -134,9 +142,7 @@ function Nav() {
                 <button
                   type="button"
                   className={`${liStyle} ${
-                    activeSection === item.sectionId
-                      ? "text-green-600"
-                      : "text-gray-700"
+                    isItemActive(item) ? "text-green-600" : "text-gray-700"
                   }`}
                   onClick={() => handleMenuClick(item)}
                 >
@@ -147,7 +153,7 @@ function Nav() {
           </ul>
 
           <a
-            href="#"
+            href="https://www.instagram.com/sevilvelsha?igsh=MXVoN29zNWIza2NzdQ%3D%3D"
             className="hidden items-center gap-1 font-semibold text-green-600 xl:flex"
           >
             <FaInstagram className="mt-1" /> @sevil.Velsha
@@ -186,7 +192,7 @@ function Nav() {
                   <button
                     type="button"
                     className={`w-full rounded-md px-3 py-2 text-left ${liStyle} ${
-                      activeSection === item.sectionId
+                      isItemActive(item)
                         ? "bg-green-50 text-green-600"
                         : "text-gray-700"
                     }`}
