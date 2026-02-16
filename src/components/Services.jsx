@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Master from "../assets/images/masters-leadership.webp";
 import Coaching from "../assets/images/coaching.webp";
 import Dancing from "../assets/images/dancing.webp";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const SERVICE_SECTIONS = [
   {
@@ -53,23 +57,52 @@ const SERVICE_SECTIONS = [
 ];
 
 function Services() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const media = gsap.matchMedia();
+
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      const ctx = gsap.context(() => {
+        const cards = gsap.utils.toArray("[data-service-card]");
+
+        cards.forEach((card) => {
+          gsap.fromTo(
+            card,
+            {
+              autoAlpha: 0,
+              x: Number(card.dataset.offsetX) || 0,
+              y: Number(card.dataset.offsetY) || 16,
+            },
+            {
+              autoAlpha: 1,
+              x: 0,
+              y: 0,
+              duration: 0.72,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 88%",
+                once: true,
+              },
+            },
+          );
+        });
+      }, sectionRef);
+
+      return () => ctx.revert();
+    });
+
+    media.add("(prefers-reduced-motion: reduce)", () => {
+      gsap.set("[data-service-card]", { autoAlpha: 1, x: 0, y: 0 });
+    });
+
+    return () => media.revert();
+  }, []);
+
   return (
-    <section id="services">
-      <style>
-        {`
-          @keyframes serviceFadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(16px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}
-      </style>
-      <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-16 md:py-20 lg:px-8">
+    <section id="services" ref={sectionRef}>
+      <div className="mx-auto w-full max-w-6xl px-4 py-24 sm:px-6 sm:py-28 md:py-32 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h5 className="mb-2 text-sm font-semibold uppercase tracking-[0.24em] text-green-500 sm:text-base">
             How We Work
@@ -84,47 +117,47 @@ function Services() {
           </p>
         </div>
 
-        <div className="mt-10 space-y-12 md:mt-12 md:space-y-14">
+        <div className="mt-10 space-y-12 md:mt-12 md:space-y-20">
           {SERVICE_SECTIONS.map((section, index) => {
             const singleLastItem = section.points.length % 2 === 1;
 
             return (
-              <article key={index} className="space-y-5 md:space-y-6">
-                <div className="group relative overflow-hidden rounded-2xl">
+              <article key={index} className="space-y-5 md:space-y-10">
+                <div className="relative overflow-hidden rounded-2xl">
                   <img
                     alt={section.imageAlt}
                     loading="lazy"
                     decoding="async"
-                    className="h-[260px] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] sm:h-[320px] md:h-[380px] lg:h-[460px]"
+                    className="h-[260px] w-full object-cover sm:h-[320px] md:h-[380px] lg:h-[460px]"
                     src={section.image}
                   />
                   <span
-                    className={`absolute bottom-3 ${section.tagPosition} rounded-xl rounded-bl-none ${section.tagColor} px-4 py-2 text-[11px] font-medium tracking-wide text-white transition-transform duration-300 group-hover:-translate-y-1 sm:bottom-4 sm:px-5 sm:text-xs md:px-6 md:py-2.5 md:text-sm`}
+                    className={`absolute bottom-3 ${section.tagPosition} rounded-xl rounded-bl-none ${section.tagColor} px-4 py-2 text-[11px] font-medium tracking-wide text-white sm:bottom-4 sm:px-5 sm:text-xs md:px-6 md:py-2.5 md:text-sm`}
                   >
                     {section.tag}
                   </span>
                 </div>
 
+                <div className="space-y-5 md:space-y-6">
                 <h3 className="mx-auto max-w-4xl px-2 text-center text-lg font-bold leading-snug text-gray-800 sm:text-xl md:text-2xl">
                   {section.title}
                 </h3>
 
-                <div className="grid gap-4 text-gray-600 md:grid-cols-2 md:gap-5">
+                <div className="grid gap-4 text-gray-600 md:grid-cols-2 md:gap-8">
                   {section.points.map((point, pointIndex) => {
                     const isLastSingle =
                       singleLastItem && pointIndex === section.points.length - 1;
-                    const hoverShadowClass =
-                      section.borderColor === "border-[#FF6E68]"
-                        ? "hover:shadow-[0_10px_30px_rgba(255,110,104,0.24)]"
-                        : section.borderColor === "border-[#EFEA53]"
-                          ? "hover:shadow-[0_10px_30px_rgba(239,234,83,0.3)]"
-                          : "hover:shadow-[0_10px_30px_rgba(121,215,119,0.24)]";
+                    const startsFromLeft = pointIndex % 2 === 0;
+                    const offsetX = isLastSingle ? 0 : startsFromLeft ? -18 : 18;
+                    const offsetY = isLastSingle ? 20 : 14;
 
                     return (
                       <p
                         key={pointIndex}
-                        style={{ animationDelay: `${120 + index * 120 + pointIndex * 90}ms` }}
-                        className={`rounded-xl border px-4 py-3 text-center text-sm leading-relaxed opacity-0 transition-[transform,box-shadow] duration-300 [animation:serviceFadeInUp_600ms_ease-out_forwards] motion-reduce:opacity-100 motion-reduce:[animation:none] hover:-translate-y-0.5 ${hoverShadowClass} sm:text-base md:px-5 md:py-4 ${section.borderColor} ${
+                        data-service-card
+                        data-offset-x={offsetX}
+                        data-offset-y={offsetY}
+                        className={`rounded-xl border px-4 py-3 text-center text-sm leading-relaxed sm:text-base md:px-5 md:py-4 ${section.borderColor} ${
                           isLastSingle ? "md:col-span-2" : ""
                         }`}
                       >
@@ -132,6 +165,7 @@ function Services() {
                       </p>
                     );
                   })}
+                </div>
                 </div>
               </article>
             );
