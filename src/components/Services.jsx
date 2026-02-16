@@ -55,6 +55,20 @@ const SERVICE_SECTIONS = [
 function Services() {
   return (
     <section id="services">
+      <style>
+        {`
+          @keyframes serviceFadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(16px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
       <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-16 md:py-20 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h5 className="mb-2 text-sm font-semibold uppercase tracking-[0.24em] text-green-500 sm:text-base">
@@ -76,16 +90,16 @@ function Services() {
 
             return (
               <article key={index} className="space-y-5 md:space-y-6">
-                <div className="relative overflow-hidden rounded-2xl">
+                <div className="group relative overflow-hidden rounded-2xl">
                   <img
                     alt={section.imageAlt}
                     loading="lazy"
                     decoding="async"
-                    className="h-[260px] w-full object-cover sm:h-[320px] md:h-[380px] lg:h-[460px]"
+                    className="h-[260px] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] sm:h-[320px] md:h-[380px] lg:h-[460px]"
                     src={section.image}
                   />
                   <span
-                    className={`absolute bottom-3 ${section.tagPosition} rounded-xl rounded-bl-none ${section.tagColor} px-4 py-2 text-[11px] font-medium tracking-wide text-white sm:bottom-4 sm:px-5 sm:text-xs md:px-6 md:py-2.5 md:text-sm`}
+                    className={`absolute bottom-3 ${section.tagPosition} rounded-xl rounded-bl-none ${section.tagColor} px-4 py-2 text-[11px] font-medium tracking-wide text-white transition-transform duration-300 group-hover:-translate-y-1 sm:bottom-4 sm:px-5 sm:text-xs md:px-6 md:py-2.5 md:text-sm`}
                   >
                     {section.tag}
                   </span>
@@ -99,11 +113,18 @@ function Services() {
                   {section.points.map((point, pointIndex) => {
                     const isLastSingle =
                       singleLastItem && pointIndex === section.points.length - 1;
+                    const hoverShadowClass =
+                      section.borderColor === "border-[#FF6E68]"
+                        ? "hover:shadow-[0_10px_30px_rgba(255,110,104,0.24)]"
+                        : section.borderColor === "border-[#EFEA53]"
+                          ? "hover:shadow-[0_10px_30px_rgba(239,234,83,0.3)]"
+                          : "hover:shadow-[0_10px_30px_rgba(121,215,119,0.24)]";
 
                     return (
                       <p
                         key={pointIndex}
-                        className={`rounded-xl border px-4 py-3 text-center text-sm leading-relaxed sm:text-base md:px-5 md:py-4 ${section.borderColor} ${
+                        style={{ animationDelay: `${120 + index * 120 + pointIndex * 90}ms` }}
+                        className={`rounded-xl border px-4 py-3 text-center text-sm leading-relaxed opacity-0 transition-[transform,box-shadow] duration-300 [animation:serviceFadeInUp_600ms_ease-out_forwards] motion-reduce:opacity-100 motion-reduce:[animation:none] hover:-translate-y-0.5 ${hoverShadowClass} sm:text-base md:px-5 md:py-4 ${section.borderColor} ${
                           isLastSingle ? "md:col-span-2" : ""
                         }`}
                       >
