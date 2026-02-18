@@ -104,13 +104,13 @@ function Testimonial() {
 
           <button
             type="button"
-            className="testimonial-prev absolute md:-left-4 -left-2 top-1/2 z-10 -translate-y-1/2 rounded-lg border border-green-200 bg-white px-4 py-2 text-sm font-medium text-green-700 transition hover:bg-green-50"
+            className="testimonial-prev absolute md:-left-4 -left-2 top-1/2 z-10 -translate-y-1/2 rounded-lg border border-green-200 bg-green-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-green-400"
           >
             <IoIosArrowBack />
           </button>
           <button
             type="button"
-            className="testimonial-next absolute md:-right-4 -right-2 top-1/2 z-10 -translate-y-1/2 rounded-lg border border-green-200 bg-white px-4 py-2 text-sm font-medium text-green-700 transition hover:bg-green-50"
+            className="testimonial-next absolute md:-right-4 -right-2 top-1/2 z-10 -translate-y-1/2 rounded-lg border border-green-200 bg-green-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-green-400"
           >
             <IoIosArrowForward />
           </button>

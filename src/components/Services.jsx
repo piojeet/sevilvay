@@ -66,23 +66,34 @@ function Services() {
       const ctx = gsap.context(() => {
         const cards = gsap.utils.toArray("[data-service-card]");
 
-        cards.forEach((card) => {
+        cards.forEach((card, index) => {
+          const direction = index % 2 === 0 ? -1 : 1;
+          const offsetX = Number(card.dataset.offsetX);
+          const offsetY = Number(card.dataset.offsetY);
+
           gsap.fromTo(
             card,
             {
               autoAlpha: 0,
-              x: Number(card.dataset.offsetX) || 0,
-              y: Number(card.dataset.offsetY) || 16,
+              x: Number.isFinite(offsetX) ? offsetX : 48 * direction,
+              y: Number.isFinite(offsetY) ? offsetY : 44,
+              scale: 0.9,
+              rotateZ: 2.4 * direction,
+              filter: "blur(8px)",
             },
             {
               autoAlpha: 1,
               x: 0,
               y: 0,
-              duration: 0.72,
-              ease: "power2.out",
+              scale: 1,
+              rotateZ: 0,
+              filter: "blur(0px)",
+              duration: 1,
+              ease: "power4.out",
+              delay: index * 0.06,
               scrollTrigger: {
                 trigger: card,
-                start: "top 88%",
+                start: "top 92%",
                 once: true,
               },
             },
@@ -138,18 +149,18 @@ function Services() {
                   </span>
                 </div>
 
-                <div className="space-y-5 md:space-y-6">
+                <div className="space-y-7 md:space-y-9">
                 <h3 className="mx-auto max-w-4xl px-2 text-center text-lg font-bold leading-snug text-gray-800 sm:text-xl md:text-2xl">
                   {section.title}
                 </h3>
 
-                <div className="grid gap-4 text-gray-600 md:grid-cols-2 md:gap-8">
+                <div className="grid gap-6 text-gray-600 md:grid-cols-2 md:gap-x-8 md:gap-y-10">
                   {section.points.map((point, pointIndex) => {
                     const isLastSingle =
                       singleLastItem && pointIndex === section.points.length - 1;
                     const startsFromLeft = pointIndex % 2 === 0;
-                    const offsetX = isLastSingle ? 0 : startsFromLeft ? -18 : 18;
-                    const offsetY = isLastSingle ? 20 : 14;
+                    const offsetX = isLastSingle ? 0 : startsFromLeft ? -72 : 72;
+                    const offsetY = isLastSingle ? 54 : 42;
 
                     return (
                       <p
@@ -157,7 +168,7 @@ function Services() {
                         data-service-card
                         data-offset-x={offsetX}
                         data-offset-y={offsetY}
-                        className={`rounded-xl border px-4 py-3 text-center text-sm leading-relaxed sm:text-base md:px-5 md:py-4 ${section.borderColor} ${
+                        className={`flex min-h-[84px] items-center justify-center rounded-xl border px-5 py-4 text-center text-base leading-relaxed sm:min-h-[96px] sm:px-6 sm:py-5 sm:text-lg md:px-7 md:py-6 ${section.borderColor} ${
                           isLastSingle ? "md:col-span-2" : ""
                         }`}
                       >
