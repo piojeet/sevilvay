@@ -1,6 +1,7 @@
 import { Youtube } from "lucide-react";
 import React from "react";
 import { FaFacebookF, FaTiktok, FaTwitter } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
 import { LuInstagram } from "react-icons/lu";
 import { NavLink } from "react-router";
@@ -19,6 +20,7 @@ const SOCIAL_LINKS = [
   { label: "Youtube", href: "https://www.youtube.com/@VoiceStudio-t7j", icon: Youtube },
   { label: "Instagram", href: "https://www.instagram.com/sevilvelsha/?igsh=MXVoN29zNWIza2NzdQ%3D%3Ds", icon: LuInstagram },
   { label: "Tik Tok", href: "https://www.tiktok.com/@sevilvelsha?lang=en", icon: FaTiktok },
+  { label: "Tik Tok", href: "https://x.com/sevilvelsha", icon: FaXTwitter },
 ];
 
 function Footer() {
