@@ -10,25 +10,49 @@ const TESTIMONIALS = [
     name: "Hazel Dawson",
     role: "Managing Director",
     quote:
-      "Fusce elementum pretium odio eu hendrerit. Donec eu malesuada libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.",
+      "Voice Control changed how I’m perceived in professional settings. I didn’t become louder — I became clearer, calmer, and more authoritative. Meetings shifted. People listened without interruption.",
   },
   {
     name: "Rati Jhaveri",
-    role: "Housewife",
+    role: "Educator & Public Speaker",
     quote:
-      "Fusce elementum pretium odio eu hendrerit. Donec eu malesuada libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.",
+      "This is not performance training. It’s structural voice work. I learned how breath, pacing, and tone create authority without effort. The results were immediate and sustainable.",
   },
   {
     name: "Aditi Nayak",
-    role: "Manager",
+    role: "Operations Manager",
     quote:
-      "Fusce elementum pretium odio eu hendrerit. Donec eu malesuada libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.",
+      "I used to over-explain and rush. Voice Control helped me slow down and sound grounded. My communication became confident — without forcing confidence.",
   },
   {
-    name: "Aditi Nayak",
-    role: "Manager",
+    name: "Michael Turner",
+    role: "Senior Management Consultant",
     quote:
-      "Fusce elementum pretium odio eu hendrerit. Donec eu malesuada libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.",
+      "Voice Control gave me precision. I speak less, but with more impact. Clients respond faster and with more trust.",
+  },
+  {
+    name: "Elena Morozova",
+    role: "University Lecturer",
+    quote:
+      "The method connects voice technique with meaning. My lectures became clearer, calmer, and more engaging — without performance or strain.",
+  },
+  {
+    name: "Daniel Brooks",
+    role: "Corporate Lawyer",
+    quote:
+      "I stopped forcing confidence. The work helped me regulate pace, breath, and tone — which changed how authority is perceived in negotiations.",
+  },
+  {
+    name: "Priya Shah",
+    role: "Founder & CEO",
+    quote:
+      "Voice Control refined how I speak under pressure. Board meetings, pitches, and difficult conversations became controlled and grounded.",
+  },
+  {
+    name: "Laura Bennett",
+    role: "Communications Manager",
+    quote:
+      "This is not vocal polishing. It’s structural work that changes how your message lands. The difference is subtle — and powerful.",
   },
 ];
 
@@ -64,11 +88,14 @@ function Testimonial() {
               0: { slidesPerView: 1 },
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
+              
             }}
+
+            className="!items-stretch"
           >
             {TESTIMONIALS.map((item, index) => (
-              <SwiperSlide key={`${item.name}-${index}`} className="h-auto pb-4">
-                <article className="rounded-2xl border border-green-100 bg-white p-5 shadow-sm sm:p-6">
+              <SwiperSlide key={`${item.name}-${index}`} className="pb-4 !h-auto">
+                <article className="rounded-2xl border border-green-100 bg-white p-5 shadow-sm sm:p-6 h-full">
                   <div className="mb-5 flex items-start justify-between gap-4">
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 sm:text-2xl">

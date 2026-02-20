@@ -24,7 +24,7 @@ function Hero() {
               className="inline-block cursor-pointer rounded-full rounded-tr-none bg-[#81e281] px-7 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-[#74d574] sm:px-10 sm:py-3.5 sm:text-base"
               href="/booking"
             >
-              Book a Free Voice Assessment
+              Request a Voice Evaluation
             </a>
           </div>
         </div>

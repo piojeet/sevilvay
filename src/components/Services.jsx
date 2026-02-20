@@ -47,7 +47,7 @@ const SERVICE_SECTIONS = [
     tagColor: "bg-[#EFEA53]",
     tagPosition: "right-3 sm:right-4 md:right-5",
     borderColor: "border-[#EFEA53]",
-    title: "Author of the upcoming textbook:",
+    title: "Author of Voice Control: A Professional Method for Vocal Authority",
     points: [
       "Published in international journals on prosody, articulation, and expressive acoustics.",
       "An acoustic and emotional approach to classical theatre and powerful speech delivery.",
